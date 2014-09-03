@@ -44,9 +44,9 @@ def data_get(request):
 	if doc_id is not None:
 		doc = mongo.db.documents.find_one({'_id': ObjectId(doc_id), 'readingKey': reading_key})
 
-		return HttpResponse(json.dumps({'status': 'ok', 'document': json.loads(doc.get('data'))}, cls=encoders.DBJSONEncoder), content_type='application/json')
+		return HttpResponse(json.dumps({'status': 'ok', 'document': {'data': json.loads(doc.get('data')), 'id': str(doc.get('_id'))}}, cls=encoders.DBJSONEncoder), content_type='application/json')
 	else:
-		docs = [json.loads(doc.get('data')) for doc in mongo.db.documents.find({'readingKey': reading_key})]
+		docs = [{'data': json.loads(doc.get('data')), 'id': str(doc.get('_id'))} for doc in mongo.db.documents.find({'readingKey': reading_key})]
 
 		return HttpResponse(json.dumps({'status': 'ok', 'documents': docs}, cls=encoders.DBJSONEncoder), content_type='application/json')
 
