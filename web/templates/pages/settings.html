@@ -9,19 +9,180 @@
 					<h2 id="settings">Settings</h2>
 					<p>Your api key for writing to database is "<strong>{{ user_doc.writing_api_key }}</strong>". Keep this secret. You cannot read documents with this key. You can write new ones (POST), update (PATCH) or delete (DELETE) existing ones.</p>
 					<p>You can generate a new one with this button. You will have to update this key in all your apps.</p>
-					<p><a href="#" class="button">Generate new key for writing</a></p>
+					<p><a href="#" id="generate-writing-key" class="button">Generate new key for writing</a></p>
 				</li>
 				<li>
 					<p>Your api key for reading from database is "<strong>{{ user_doc.reading_api_key }}</strong>". Keep this secret at your own discretion. You can only read (GET) documents with this key.</p>
 					<p>You can generate a new one with this button. You will have to update this key in all your apps.</p>
-					<p><a href="#" class="button">Generate new key for reading</a></p>
+					<p><a href="#" id="generate-reading-key" class="button">Generate new key for reading</a></p>
 				</li>
 			</ol>
 			<ol>
 				<li>
 					<h2 id="api">API</h2>
-					<p>Your api key for writing to database is <strong>{{ user_doc.writing_api_key }}</strong></p>
-					<p>Your api key for reading from database is <strong>{{ user_doc.reading_api_key }}</strong></p>
+				</li>
+				<li>
+					<h3>GET</h3>
+					<p>If you want to get your document or documents, then you'd use /api/data/ with GET method.</p>
+					<h4>Fetching all documents</h4>
+					<table>
+						<thead>
+							<tr>
+								<th>Parameter</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>readingKey</td>
+								<td>The key for reading the documents.</td>
+							</tr>
+						</tbody>
+					</table>
+					<p>This type of GET request yields result with documents property that holds all of your documents:</p>
+					<pre>
+{
+	"status": "ok",
+	"documents": [{"data": "[object]", "id": "XXXXXXXXXXXXXXXXXXXXXXXXXXX"}, ...]
+}
+					</pre>
+					<h4>Fetching a specific document</h4>
+					<table>
+						<thead>
+							<tr>
+								<th>Parameter</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>readingKey</td>
+								<td>The key for reading the documents.</td>
+							</tr>
+							<tr>
+								<td>documentId</td>
+								<td>If you're targeting a specific document, then you can use this parameter with the right id.</td>
+							</tr>
+						</tbody>
+					</table>
+					<p>This type of GET request yields result with document property that holds only the requested document:</p>
+					<pre>
+{
+	"status": "ok",
+	"document": {"data": "[object]", "id": "XXXXXXXXXXXXXXXXXXXXXXXXXXX"}
+}
+					</pre>
+				</li>
+				<li>
+					<h3>POST</h3>
+					<p>If you want to insert new or update existing document, then you will have to use /api/data/ with POST method.</p>
+					<p>Keep in mind that you can have only 5 documents and none can be larger than 1MB (when stringified).</p>
+					<h4>Inserting a new document</h4>
+					<table>
+						<thead>
+							<tr>
+								<th>Parameter</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>writingKey</td>
+								<td>The key for writing new or modifying existing documents.</td>
+							</tr>
+							<tr>
+								<td>document</td>
+								<td>A JSON that has to be stringified (JSON.stringify).</td>
+							</tr>
+						</tbody>
+					</table>
+					<p>Result is scarce in this case, but returned only when document is inserted:</p>
+					<pre>
+{
+	"status": "ok"
+}
+					</pre>
+					<h4>Updating an existing document</h4>
+					<table>
+						<thead>
+							<tr>
+								<th>Parameter</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>writingKey</td>
+								<td>The key for writing new or modifying existing documents.</td>
+							</tr>
+							<tr>
+								<td>documentId</td>
+								<td>The id of the document you're trying to update</td>
+							</tr>
+							<tr>
+								<td>document</td>
+								<td>A JSON that has to be stringified (JSON.stringify).</td>
+							</tr>
+						</tbody>
+					</table>
+					<p>If you don't provide the id, the database will try to insert a new document.</p>
+					<p><strong>This request will not patch the document but rather overwrite it.</strong></p>
+					<p>Result is scarce in this case too, and returned only when document is updated:</p>
+					<pre>
+{
+	"status": "ok"
+}
+					</pre>
+				</li>
+				<li>
+					<h3>DELETE</h3>
+					<p>If you want to remove one or all documents, then you will have to use /api/data/ with DELETE method.</p>
+					<h4>Delete one document</h4>
+					<table>
+						<thead>
+							<tr>
+								<th>Parameter</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>writingKey</td>
+								<td>The key for writing new or modifying existing documents.</td>
+							</tr>
+							<tr>
+								<td>documentId</td>
+								<td>The id of the document you're trying to update</td>
+							</tr>
+						</tbody>
+					</table>
+					<p>Result is scarce in this case, but returned only when document is deleted:</p>
+					<pre>
+{
+	"status": "ok"
+}
+					</pre>
+					<h4>Delete all documents</h4>
+					<table>
+						<thead>
+							<tr>
+								<th>Parameter</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>writingKey</td>
+								<td>The key for writing new or modifying existing documents.</td>
+							</tr>
+						</tbody>
+					</table>
+					<p>Result is scarce in this case too, and returned only when document is deleted:</p>
+					<pre>
+{
+	"status": "ok"
+}
+					</pre>
 				</li>
 			</ol>
 			<ol>
@@ -31,4 +192,5 @@
 					<p>Your api key for reading from database is <strong>{{ user_doc.reading_api_key }}</strong></p>
 				</li>
 			</ol>
+			{% csrf_token %}
 		</div>{% endblock main %}{% block extra_main_attrs %} class="settings"{% endblock extra_main_attrs %}
