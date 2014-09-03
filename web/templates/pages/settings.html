@@ -1,0 +1,34 @@
+{% extends 'skeleton.html' %}{% load form_tags %}{% block main %}<ol id="navigation">
+			<li><a href="#settings">Settings</a></li>
+			<li><a href="#api">API</a></li>
+			<li><a href="#examples">Examples</a></li>
+		</ol>
+		<div class="content">
+			<ol>
+				<li>
+					<h2 id="settings">Settings</h2>
+					<p>Your api key for writing to database is "<strong>{{ user_doc.writing_api_key }}</strong>". Keep this secret. You cannot read documents with this key. You can write new ones (POST), update (PATCH) or delete (DELETE) existing ones.</p>
+					<p>You can generate a new one with this button. You will have to update this key in all your apps.</p>
+					<p><a href="#" class="button">Generate new key for writing</a></p>
+				</li>
+				<li>
+					<p>Your api key for reading from database is "<strong>{{ user_doc.reading_api_key }}</strong>". Keep this secret at your own discretion. You can only read (GET) documents with this key.</p>
+					<p>You can generate a new one with this button. You will have to update this key in all your apps.</p>
+					<p><a href="#" class="button">Generate new key for reading</a></p>
+				</li>
+			</ol>
+			<ol>
+				<li>
+					<h2 id="api">API</h2>
+					<p>Your api key for writing to database is <strong>{{ user_doc.writing_api_key }}</strong></p>
+					<p>Your api key for reading from database is <strong>{{ user_doc.reading_api_key }}</strong></p>
+				</li>
+			</ol>
+			<ol>
+				<li>
+					<h2 id="examples">Examples</h2>
+					<p>Your api key for writing to database is <strong>{{ user_doc.writing_api_key }}</strong></p>
+					<p>Your api key for reading from database is <strong>{{ user_doc.reading_api_key }}</strong></p>
+				</li>
+			</ol>
+		</div>{% endblock main %}{% block extra_main_attrs %} class="settings"{% endblock extra_main_attrs %}

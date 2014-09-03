@@ -1,0 +1,54 @@
+body {font-family:'Open Sans', sans-serif;}
+
+#header {padding:10px;border-bottom:3px solid #2980b9;}
+#header h1 {}
+#header h1 a {font-size:30px;text-decoration:none;color:#2980b9;}
+#header div {position:absolute;top:15px;right:20px;}
+#header div a {color:#2980b9;font-size:15px;}
+
+#main {width:960px;margin:50px auto;}
+
+#main.index {letter-spacing:-4px;}
+#main.index dl {width:440px;margin:0 20px;display:inline-block;letter-spacing:normal;word-spacing:normal;vertical-align:top;}
+#main.index dl dt {font-size:18px;margin:0 0 10px 0;}
+#main.index dl dd {font-size:15px;margin:0 0 15px 0;padding:0 0 10px 0;border-bottom:1px dashed #f0f0f0;line-height:20px;}
+#main.index dl dd a {color:#2980b9;}
+#main.index ol {display:inline-block;width:440px;margin:0 20px;letter-spacing:normal;word-spacing:normal;vertical-align:top;}
+#main.index ol li {margin:0 0 10px 0;text-align:right;}
+
+#main .panco-auth-block {width:450px;margin:0 auto;}
+#main .panco-auth-block fieldset {}
+#main .panco-auth-block fieldset legend {font-size:18px;margin:0 0 15px 0;}
+#main .panco-auth-block fieldset ol {}
+#main .panco-auth-block fieldset ol li {margin:0 0 10px 0;}
+#main .panco-auth-block fieldset ol li label {font-size:15px;display:inline-block;width:150px;}
+#main .panco-auth-block fieldset ol li input {font-size:15px;display:inline-block;padding:5px;}
+#main .panco-auth-block fieldset div {}
+#main .panco-auth-block fieldset div input {margin:0 0 0 154px;}
+#main .panco-auth-block fieldset .help-links {margin:20px 0 0 0;padding:10px 0 0 0;border-top:1px dashed #f0f0f0;}
+#main .panco-auth-block fieldset .help-links li {display:inline-block;margin:0 20px 0 0;}
+#main .panco-auth-block fieldset .help-links li a {color:#2980b9;font-size:15px;}
+
+/*SETTINGS*/
+#main.settings {letter-spacing:-4px;position:relative;}
+
+#navigation {position:fixed;display:inline-block;letter-spacing:normal;word-spacing:normal;vertical-align:top;}
+#navigation li {margin:0 0 15px 0;padding:0 0 0 10px;border-left:3px solid #2980b9;}
+#navigation li:hover {border-left:3px solid #3498db;}
+#navigation li a {font-size:15px;text-decoration:none;color:#2980b9;}
+
+.content {width:700px;margin:0 0 0 260px;display:inline-block;letter-spacing:normal;word-spacing:normal;vertical-align:top;}
+.content ol {}
+.content ol li {padding:0 0 20px 0;margin:0 0 20px 0;border-bottom:1px dashed #f0f0f0;}
+.content ol li h2 {color:#2980b9;font-size:18px;margin:0 0 15px 0;}
+.content ol li p {font-size:15px;line-height:20px;margin:0 0 20px 0;}
+
+
+#footer {padding:50px 0 20px 0;}
+#footer ol {margin:0 auto;width:920px;}
+#footer ol li {display:inline-block;margin:0 20px 0 0;}
+#footer ol li a {color:#2980b9;font-size:18px;}
+
+/*META*/
+.button {padding:5px 10px;color:#fff;font-size:18px;border-radius:3px;display:inline-block;background-color:#2980b9;border:1px solid #f0f0f0;text-decoration:none;-webkit-box-shadow:inset 0 1px 5px 0 rgba(0,0,0,.1);box-shadow:inset 0 1px 5px 0 rgba(0,0,0,.1);}
+.button:hover {background-color:#3498db;}

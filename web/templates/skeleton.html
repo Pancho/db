@@ -1,0 +1,32 @@
+{% load form_tags %}<!DOCTYPE html>
+<html>
+	<head>
+		<title>db.panco.si</title>
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
+		<link rel="icon" href="/media/img/favicon.ico" />
+		<link type="text/css" rel="stylesheet" href="/media/css/reset.css" />
+		<link type="text/css" rel="stylesheet" href="/media/css/default.css" />
+		<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,width=device-width" />
+	</head>
+	<body>
+		<div id="header">
+			<h1><a href="{% url 'web.index' %}">db.panco.si</a></h1>{% if user.is_authenticated %}
+			<div>
+				<a href="{% url 'logout' %}">Logout</a>
+			</div>{% endif %}
+		</div>
+		<div id="main"{% block extra_main_attrs %}{% endblock extra_main_attrs %}>
+			{% block main %}{% endblock main %}
+		</div>
+		<div id="footer">
+			<ol>
+				<li><a href="">Homepage</a></li>
+				<li><a href="">Blog</a></li>
+				<li><a href="">Wilderness</a></li>
+			</ol>
+		</div>
+		<script type="text/javascript" src="/media/js/jquery.js"></script>
+		<script type="text/javascript" src="/media/js/common.js"></script>
+		<script type="text/javascript" src="/media/js/db.js"></script>
+	</body>
+</html>

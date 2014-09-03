@@ -1,0 +1,19 @@
+{% extends 'skeleton.html' %}{% load form_tags %}{% block main %}<dl>
+			<dt>What is this?</dt>
+			<dd>It's a database, a JSON storage, available from the internets.</dd>
+			<dt>How does it work?</dt>
+			<dd>You use your api key to access the data. You use a different one for writing it. More on this <a href="">here</a>.</dd>
+			<dt>Is the data safe?</dt>
+			<dd>No! While you can <a href="">protect it yourself</a>, security is not a concern of this service. If you need a really secure DB, this is not the answer.</dd>
+			<dt>So anyone can write into my database?</dt>
+			<dd>Again, no. Only applications that know of the secret key will be able to write the data.</dd>
+			<dt>How much can I store?</dt>
+			<dd>5 documents, none larger than <a href="/media/1mb.txt" target="_blank" title="Take a look how much is it :)">1MB</a>. For the time being.</dd>
+			<dt>Why would I even need this?</dt>
+			<dd>Are you in a hurry and don't want to set up a DB server? Can't? Want your app to be purely HTML, Js and CSS? Well, this might be the answer :)</dd>
+		</dl>
+		<ol>{% if user.is_authenticated %}
+			<li><a href="{% url 'web.settings' %}" class="button">Settings</a></li>{% else %}
+			<li><a href="{% url 'web.login' %}" class="button">Log In</a></li>
+			<li><a href="{% url 'web.register' %}" class="button">Register</a></li>{% endif %}
+		</ol>{% endblock main %}{% block extra_main_attrs %} class="index"{% endblock extra_main_attrs %}
